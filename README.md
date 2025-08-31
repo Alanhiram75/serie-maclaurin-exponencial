@@ -1,4 +1,3 @@
-# serie-maclaurin-exponencial
 # Serie de Maclaurin para la función exponencial e^x
 
 Este proyecto implementa un método numérico para calcular el valor aproximado de e^x usando la serie de Maclaurin.
