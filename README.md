@@ -1,37 +1,46 @@
-# Serie de Maclaurin para la función exponencial e^x
+# Serie de Maclaurin para la función exponencial eˣ
 
-Este proyecto implementa un método numérico para calcular el valor aproximado de e^x usando la serie de Maclaurin.
-
----
-
-¿Qué es la serie de Maclaurin?
-
-La serie de Maclaurin representa una función como la suma infinita de términos derivados evaluados en cero. En el caso de e^x, esta serie permite expresar la función como una suma de potencias de x multiplicadas por coeficientes relacionados con factoriales.
-
-Todas las derivadas de e^x son iguales a la función misma, y evaluadas en cero, toman el valor 1. Por lo tanto, cada término de la serie es el recíproco del factorial del orden del término, multiplicado por x elevado a ese orden.
+Este proyecto implementa un método numérico para calcular el valor aproximado de `e^x` usando la serie de Maclaurin.
 
 ---
 
-Cómo usar el programa
+## ¿Qué es la serie de Maclaurin?
 
-1. Ejecuta el archivo `maclaurin.py`.
-2. Ingresa el valor de x para el cual quieres calcular e^x.
-3. Ingresa el valor de la tolerancia (error verdadero permitido), por ejemplo 0.0001.
-4. Ingresa el valor real de e^x para que el programa calcule el error relativo verdadero.
-
-El programa mostrará iteración por iteración el valor aproximado y los errores relativos hasta alcanzar la tolerancia especificada.
+La serie de Maclaurin representa una función como la suma infinita de términos derivados evaluados en cero. En el caso de `e^x`, esta serie permite expresar la función como una suma de potencias de `x` multiplicadas por coeficientes relacionados con factoriales.
 
 ---
 
-Código principal
+## Cómo usar este archivo en otro proyecto
 
-El código está en `maclaurin.py`. Se basa en la fórmula:
+Puedes reutilizar el método definido en `maclaurin.py` desde otro archivo Python.
 
-e^x = suma infinita de (x^n / n!)
+### 1. Importar el método
+
+Primero, asegúrate de tener el archivo [`maclaurin.py`](https://github.com/Alanhiram75/serie-maclaurin-exponencial/blob/main/maclaurin.py) en la misma carpeta que tu archivo principal.
+
+Luego, en tu script principal, importa el método con la siguiente línea:
+
+```python
+from maclaurin import calcular_exponencial_maclaurin
+```
+
+### 2. Llamar al método
+
+Una vez importado, puedes llamarlo así en cualquier parte de tu código:
+
+```python
+calcular_exponencial_maclaurin()
+```
 
 ---
 
-Autor
+## Archivo principal
+
+* [`maclaurin.py`](https://github.com/Alanhiram75/serie-maclaurin-exponencial/blob/main/maclaurin.py)
+
+---
+
+## Autor
+
 Alan Hiram Álvarez Bazán
 GitHub: [https://github.com/Alanhiram75/Alanhiram75](https://github.com/Alanhiram75/Alanhiram75)
-
