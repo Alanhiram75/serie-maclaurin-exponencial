@@ -38,3 +38,5 @@ while not condicion:
 print("\n=== RESULTADO FINAL ===")
 print(f"Valor aproximado de e^{x} = {aproximacion_actual:.6f}")
 print(f"Total de iteraciones realizadas: {iteracion + 1}")
+
+input("\nPresiona Enter para salir...")
