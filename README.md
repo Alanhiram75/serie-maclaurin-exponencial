@@ -14,7 +14,7 @@ Todas las derivadas de e^x son iguales a la función misma, y evaluadas en cero,
 
 Cómo usar el programa
 
-1. Ejecuta el archivo `maclaurin_exp.py`.
+1. Ejecuta el archivo `maclaurin.py`.
 2. Ingresa el valor de x para el cual quieres calcular e^x.
 3. Ingresa el valor de la tolerancia (error verdadero permitido), por ejemplo 0.0001.
 4. Ingresa el valor real de e^x para que el programa calcule el error relativo verdadero.
