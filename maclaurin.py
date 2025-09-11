@@ -29,14 +29,19 @@ def calcular_exponencial_maclaurin():
     aproximacion_actual = 0
     aproximacion_anterior = 0
     condicion = False
+    motivo_parada = ""
+    epsilon = 1e-15
 
     print("\n=== CÁLCULO DE e^x MEDIANTE SERIE DE MACLAURIN ===\n")
 
     while not condicion:
         resultado_iteracion = (x**iteracion) / math.factorial(iteracion)
-        aproximacion_actual += resultado_iteracion
 
-        # Error verdadero en porcentaje
+        if abs(resultado_iteracion) < epsilon:
+            motivo_parada = f"El término de la iteración fue menor que {epsilon:.0e} (prácticamente 0)."
+            break
+
+        aproximacion_actual += resultado_iteracion
         error_verdadero = abs((valor_real - aproximacion_actual) / valor_real) * 100
 
         print(f"\nIteración {iteracion + 1}")
@@ -51,18 +56,17 @@ def calcular_exponencial_maclaurin():
             print(f"{'Error relativo aproximado:':28s} {error_aproximado:>12.6f}")
 
         print("-" * 60)
-
         aproximacion_anterior = aproximacion_actual
 
-        # ✅ Ahora ya comparamos en porcentaje directo
         if error_verdadero <= tolerancia_error:
             condicion = True
+            motivo_parada = "Se alcanzó la tolerancia establecida."
         else:
             iteracion += 1
 
     print("\n=== RESULTADO FINAL ===")
     print(f"Valor aproximado de e^{x} = {aproximacion_actual:.6f}")
-    print(f"Total de iteraciones realizadas: {iteracion + 1}")
-
+    print(f"Total de iteraciones realizadas: {iteracion}")
+    print(f"Motivo de parada: {motivo_parada}")
 
 calcular_exponencial_maclaurin()
