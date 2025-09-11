@@ -10,7 +10,7 @@ def calcular_exponencial_maclaurin():
 
     while True:
         try:
-            tolerancia_error = float(input("Ingresa el valor del Error Verdadero (tolerancia, por ejemplo 0.0001): "))
+            tolerancia_error = float(input("Ingresa la tolerancia del Error Verdadero en % (ejemplo 1 para 1%): "))
             if tolerancia_error <= 0:
                 print("⚠️ La tolerancia debe ser mayor que 0.")
             else:
@@ -35,23 +35,27 @@ def calcular_exponencial_maclaurin():
     while not condicion:
         resultado_iteracion = (x**iteracion) / math.factorial(iteracion)
         aproximacion_actual += resultado_iteracion
-        error_verdadero = abs((valor_real - aproximacion_actual) / valor_real)
 
-        print(f"Iteración {iteracion + 1}")
-        print(f"  Resultado de iteración: {resultado_iteracion:.6f}")
-        print(f"  Aproximación actual: {aproximacion_actual:.6f}   Valor real: {valor_real}")
-        print(f"  Error relativo verdadero: {error_verdadero:.6f}  (Tolerancia: {tolerancia_error})")
+        # Error verdadero en porcentaje
+        error_verdadero = abs((valor_real - aproximacion_actual) / valor_real) * 100
+
+        print(f"\nIteración {iteracion + 1}")
+        print(f"{'Resultado de iteración:':28s} {resultado_iteracion:>12.6f}")
+        print(f"{'Aproximación actual:':28s} {aproximacion_actual:>12.6f}")
+        print(f"{'Valor real:':28s} {valor_real:>12.6f}")
+        print(f"{'Error relativo verdadero:':28s} {error_verdadero:>12.4f}%   (Tolerancia: {tolerancia_error:.4f}%)")
 
         if iteracion >= 1:
             diferencia = abs(aproximacion_actual - aproximacion_anterior)
             error_aproximado = diferencia / aproximacion_actual
-            print(f"  Error relativo aproximado: |{aproximacion_actual:.6f} - {aproximacion_anterior:.6f}| / {aproximacion_actual:.6f} = {error_aproximado:.6f}")
-        
+            print(f"{'Error relativo aproximado:':28s} {error_aproximado:>12.6f}")
+
         print("-" * 60)
 
         aproximacion_anterior = aproximacion_actual
 
-        if round(error_verdadero, 2) <= round(tolerancia_error, 2) and round(aproximacion_actual, 2) >= round(valor_real, 2):
+        # ✅ Ahora ya comparamos en porcentaje directo
+        if error_verdadero <= tolerancia_error:
             condicion = True
         else:
             iteracion += 1
